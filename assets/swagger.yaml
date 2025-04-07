@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: Smart Life Companion 2 REST API
+  description: REST API for Smart Life Companion 2 with enhanced capabilities.
+  version: 2.0.0
+servers:
+  - url: https://api.smartlifecompanion.com/v2
+    description: Production server (mocked)
+paths:
+  /healthsync:
+    get:
+      summary: Retrieve advanced biometric data
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  heart_rate: { type: integer, example: 70 }
+                  spo2: { type: integer, example: 99 }
+                  glucose: { type: number, example: 95.5 }
+      security:
+        - OAuth2: [read]
+  /envirosense:
+    get:
+      summary: Retrieve enhanced environmental data
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  air_quality: { type: string, example: "Excellent" }
+                  uv_index: { type: number, example: 3.2 }
+                  pressure: { type: number, example: 1013.25 }
+      security:
+        - OAuth2: [read]
+  /arnav:
+    get:
+      summary: Retrieve holographic navigation data
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  directions: { type: string, example: "Turn right in 30 meters" }
+                  holographic_overlays: { type: array, items: { type: string }, example: ["3D arrow", "Path projection"] }
+      security:
+        - OAuth2: [read]
+  /securecomm:
+    post:
+      summary: Send quantum-encrypted messages/files
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient_id: { type: string, example: "user456" }
+                message: { type: string, example: "Secure file transfer" }
+                file_url: { type: string, example: "https://example.com/file.enc" }
+      responses:
+        '200':
+          description: Message sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, example: "Sent" }
+      security:
+        - OAuth2: [write]
+security:
+  - OAuth2:
+      - read
+      - write
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.smartlifecompanion.com/oauth/authorize
+          tokenUrl: https://auth.smartlifecompanion.com/oauth/token
+          scopes:
+            read: Read access to device data
+            write: Write access for communication

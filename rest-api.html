@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Life Companion 2 - REST API</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui.css">
+</head>
+<body>
+    <header>
+       <nav>
+    <ul>
+        <li><a href="index.html">Intro</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="build-specs.html">Build Specs</a></li>
+        <li class="dropdown">
+            <a href="api-portal.html" class="dropbtn active">API Developer Portal</a>
+            <div class="dropdown-content">
+                <a href="rest-api.html">REST API</a>
+                <a href="graphql-api.html">GraphQL API</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+    </header>
+
+    <div class="main-content">
+        <h1>REST API Documentation</h1>
+        <p>Explore version 2.0 REST endpoints for Smart Life Companion 2 below.</p>
+
+        <div class="feature-card">
+            <h3>OAuth 2.0 Authentication</h3>
+            <p>All API requests use OAuth 2.0 Authorization Code flow. Refer to the <a href="api-portal.html">API Developer Portal</a> for setup details.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>REST API (Swagger)</h3>
+            <p>Interact with our REST API endpoints using Swagger UI.</p>
+            <div id="swagger-ui"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 FutureTech Gear. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-bundle.js"></script>
+    <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-standalone-preset.js"></script>
+    <script>
+        window.onload = function() {
+            SwaggerUIBundle({
+                url: "assets/swagger.yaml",
+                dom_id: "#swagger-ui",
+                presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+                layout: "StandaloneLayout"
+            });
+        };
+    </script>
+</body>
+</html>

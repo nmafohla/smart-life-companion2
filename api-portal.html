@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Life Companion 2 - API Developer Portal</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header>
+      <nav>
+    <ul>
+        <li><a href="index.html">Intro</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="build-specs.html">Build Specs</a></li>
+        <li class="dropdown">
+            <a href="api-portal.html" class="dropbtn active">API Developer Portal</a>
+            <div class="dropdown-content">
+                <a href="rest-api.html">REST API</a>
+                <a href="graphql-api.html">GraphQL API</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+    </header>
+
+    <div class="main-content">
+        <h1>API Developer Portal</h1>
+        <p>Welcome to the Smart Life Companion 2 API Developer Portal. Integrate with our enhanced version 2.0 APIs.</p>
+
+        <div class="feature-card">
+            <h3>OAuth 2.0 Authentication</h3>
+            <p>All API requests use OAuth 2.0 Authorization Code flow.</p>
+            <div class="diagram-container">
+                <img src="assets/images/oauth-flowchart.png" alt="OAuth 2.0 Flow" class="diagram-image">
+            </div>
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li>Register your app for <code>client_id</code> and <code>client_secret</code>.</li>
+                <li>Redirect to <code>https://auth.smartlifecompanion.com/oauth/authorize?client_id=YOUR_ID&redirect_uri=YOUR_URI&response_type=code&scope=read</code>.</li>
+                <li>User grants permission.</li>
+                <li>Receive <code>code</code> at <code>redirect_uri</code>.</li>
+                <li>POST to <code>https://auth.smartlifecompanion.com/oauth/token</code> with <code>code</code>, <code>client_id</code>, <code>client_secret</code>, and <code>redirect_uri</code>.</li>
+                <li>Use the access token for API calls.</li>
+            </ol>
+        </div>
+
+        <div class="feature-card">
+            <h3>Explore Our APIs</h3>
+            <p>Choose an API to explore its documentation and endpoints.</p>
+            <ul>
+                <li><a href="rest-api.html">REST API (Swagger)</a></li>
+                <li><a href="graphql-api.html">GraphQL API</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 FutureTech Gear. All rights reserved.</p>
+    </footer>
+</body>
+</html>
