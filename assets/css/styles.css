@@ -1,4 +1,10 @@
 /* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background: #F5F5F5; /* Light Grey */
@@ -17,6 +23,11 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.logo {
+    display: inline-block;
+    margin-left: 2rem;
+}
+
 .logo a {
     color: #F5F5F5; /* Light Grey */
     font-size: 1.5rem;
@@ -29,6 +40,11 @@ header {
     font-size: 0.9rem;
     margin-left: 0.5rem;
     font-style: italic;
+}
+
+nav {
+    float: right;
+    margin-right: 2rem;
 }
 
 nav ul {
@@ -54,16 +70,25 @@ nav ul li a:hover, nav ul li a.active {
     color: #42A5F5; /* Light Blue */
 }
 
-/* Remove Dropdown Styles */
-.dropdown {
-    position: relative;
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 0.5rem;
+    }
 }
 
-.dropdown-content {
-    display: none; /* We’ll remove this since we’re making the nav horizontal */
+/* Main Content */
+.main-content {
+    margin-top: 80px;
+    padding: 2rem;
 }
 
-/* Hero Section */
+/* Hero Section (Index Page) */
 .hero {
     position: relative;
     min-height: 80vh;
@@ -94,6 +119,14 @@ nav ul li a:hover, nav ul li a.active {
     max-width: 600px;
     margin-bottom: 2rem;
     color: #F5F5F5; /* Light Grey */
+}
+
+.hero-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 2rem;
+    max-width: 600px;
+    text-align: left;
 }
 
 .hero-benefits li {
@@ -149,7 +182,149 @@ nav ul li a:hover, nav ul li a.active {
     animation: bounce 2s infinite;
 }
 
-/* Feature Preview Section */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Features Hero (Features Page) */
+.features-hero {
+    background: linear-gradient(135deg, rgba(25, 118, 210, 0.9) 0%, rgba(66, 165, 245, 0.3) 100%), url('assets/images/features-bg.jpg') no-repeat center center/cover;
+    color: #F5F5F5; /* Light Grey */
+    text-align: center;
+    padding: 4rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+}
+
+.features-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.features-hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Feature Card */
+.feature-card {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #42A5F5; /* Light Blue */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-in-out forwards;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card .feature-icon {
+    font-size: 4rem;
+    margin-right: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+.feature-text {
+    flex: 1;
+}
+
+.feature-text h3 {
+    font-size: 1.8rem;
+    color: #1976D2; /* Deep Blue */
+    margin-bottom: 0.5rem;
+}
+
+.feature-text p {
+    font-size: 1.1rem;
+    color: #212121; /* Dark Grey */
+    margin-bottom: 0.5rem;
+}
+
+.feature-summary {
+    font-size: 0.95rem;
+    color: #666; /* Slightly lighter grey for contrast */
+    line-height: 1.5;
+}
+
+/* Fade-In Animation for Feature Cards */
+.feature-card:nth-child(1) { animation-delay: 0.2s; }
+.feature-card:nth-child(2) { animation-delay: 0.4s; }
+.feature-card:nth-child(3) { animation-delay: 0.6s; }
+.feature-card:nth-child(4) { animation-delay: 0.8s; }
+.feature-card:nth-child(5) { animation-delay: 1s; }
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ensure Two Rows */
+@media (min-width: 768px) {
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr); /* First row: 3 tiles */
+    }
+
+    .feature-card:nth-child(4),
+    .feature-card:nth-child(5) {
+        grid-column: span 1; /* Second row: 2 tiles */
+    }
+
+    .feature-card:nth-child(4) {
+        grid-column: 1 / 2; /* Position in second row */
+    }
+
+    .feature-card:nth-child(5) {
+        grid-column: 2 / 3; /* Position in second row */
+    }
+}
+
+/* Feature Preview Section (Index Page) */
 .feature-preview {
     padding: 4rem 2rem;
     text-align: center;
@@ -160,42 +335,6 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 2.5rem;
     color: #212121; /* Dark Grey */
     margin-bottom: 2rem;
-}
-
-.feature-card {
-    background: #FFFFFF;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    border: 1px solid #42A5F5; /* Light Blue */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-.feature-card h3 {
-    font-size: 1.5rem;
-    color: #1976D2; /* Deep Blue */
-    margin-bottom: 0.5rem;
-}
-
-.feature-card p {
-    font-size: 1rem;
-    color: #212121; /* Dark Grey */
-    text-align: center;
-}
-
-.feature-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    transition: transform 0.3s ease;
-}
-
-.feature-card:hover .feature-icon {
-    transform: scale(1.1);
 }
 
 .learn-more {
@@ -220,6 +359,10 @@ footer {
     margin-top: 3rem;
 }
 
+footer p {
+    margin-bottom: 1rem;
+}
+
 .social-links a {
     color: #F5F5F5; /* Light Grey */
     font-size: 1.5rem;
@@ -231,10 +374,20 @@ footer {
     color: #42A5F5; /* Light Blue */
 }
 
+.newsletter {
+    margin-top: 1rem;
+}
+
 .newsletter h4 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
     color: #F5F5F5; /* Light Grey */
+}
+
+.newsletter form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .newsletter input {
@@ -260,7 +413,33 @@ footer {
     box-shadow: 0 0 10px rgba(25, 118, 210, 0.5);
 }
 
-/* Particles.js */
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #1976D2; /* Deep Blue */
+    color: #F5F5F5; /* Light Grey */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.back-to-top:hover {
+    background: #FF8A65; /* Soft Coral */
+    transform: scale(1.1);
+}
+
+.back-to-top.visible {
+    display: block;
+}
+
+/* Particles.js (Index Page) */
 #particles-js canvas {
     background: transparent !important;
 }
@@ -272,16 +451,8 @@ footer {
 particles-js {
     background: transparent !important;
 }
-/* Responsive Navigation */
-@media (max-width: 768px) {
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
 
-    nav ul li {
-        margin: 0.5rem;
-    }/* GraphiQL Playground */
+/* GraphiQL Playground (GraphQL API Page) */
 #graphiql {
     height: 400px;
     border: 1px solid #42A5F5; /* Light Blue */
@@ -290,7 +461,7 @@ particles-js {
     background: #FFFFFF;
 }
 
-/* Quick Start Buttons */
+/* Quick Start Buttons (GraphQL API Page) */
 .quick-start button {
     margin-right: 1rem;
     margin-bottom: 0.5rem;
@@ -304,7 +475,7 @@ particles-js {
     background: #FF8A65; /* Soft Coral */
 }
 
-/* Collapsible Sections */
+/* Collapsible Sections (GraphQL API Page) */
 .collapsible {
     background: #1976D2; /* Deep Blue */
     color: #F5F5F5; /* Light Grey */
@@ -323,7 +494,7 @@ particles-js {
     color: #212121; /* Dark Grey */
 }
 
-/* Code Blocks */
+/* Code Blocks (GraphQL API Page) */
 pre {
     background: #212121; /* Dark Grey */
     padding: 1.5rem;
@@ -349,7 +520,7 @@ pre::before {
     font-size: 0.8rem;
 }
 
-/* Table of Contents */
+/* Table of Contents (GraphQL API Page) */
 .toc {
     position: fixed;
     top: 100px;
@@ -378,5 +549,4 @@ pre::before {
 .toc ul li a:hover, .toc ul li a.active {
     color: #FF8A65; /* Soft Coral */
     font-weight: 500;
-}
 }
