@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Life Companion 2</title>
+    <!-- Suppress Apple touch icon requests -->
+    <link rel="apple-touch-icon" href="/assets/images/icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/images/icon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -28,6 +31,98 @@
 
     <section class="hero">
         <div id="particles-js"></div>
-        <h1>Welcome to <span>Smart Life Companion 2</span></h1>
-        <p>The Smart Life Companion 2 is the next evolution of wearable technology, blending cutting-edge innovation with a sleek design. Encased in aerospace-grade titanium with a Nardo Grey finish, featuring a 1.7-inch AMOLED display with 3D touch, this smartwatch redefines health, navigation, communication, and environmental interaction.</p>
-        <ul class="hero
+        <div class="hero-container">
+            <div class="hero-image">
+                <img src="assets/images/smartwatch.png" alt="Smart Life Companion 2">
+            </div>
+            <div class="hero-text-block">
+                <div class="hero-content">
+                    <h1>Welcome to <span>Smart Life Companion 2</span></h1>
+                    <p>The Smart Life Companion 2 is the next evolution of wearable technology, blending cutting-edge innovation with a sleek design. Encased in aerospace-grade titanium with a Nardo Grey finish, featuring a 1.7-inch AMOLED display with 3D touch, this smartwatch redefines health, navigation, communication, and environmental interaction.</p>
+                    <div class="hero-benefits">
+                        <div class="benefit-tile">
+                            <img src="assets/images/healthsync2-icon.png" alt="HealthSync Icon" class="tile-icon">
+                            <span>HealthSync 2.0 for advanced health monitoring</span>
+                        </div>
+                        <div class="benefit-tile">
+                            <img src="assets/images/arnav2-icon.png" alt="ARNav Icon" class="tile-icon">
+                            <span>ARNav 2.0 with holographic navigation</span>
+                        </div>
+                        <div class="benefit-tile">
+                            <img src="assets/images/voicemate2-icon.png" alt="VoiceMate Icon" class="tile-icon">
+                            <span>VoiceMate 2.0 for seamless voice interaction</span>
+                        </div>
+                        <div class="benefit-tile">
+                            <img src="assets/images/padlock2-icon.png" alt="SecureComm Icon" class="tile-icon">
+                            <span>SecureComm 2.0 with quantum encryption</span>
+                        </div>
+                        <div class="benefit-tile">
+                            <img src="assets/images/leaf2-icon.png" alt="EnviroSense Icon" class="tile-icon">
+                            <span>EnviroSense 2.0 for environmental awareness</span>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="features.html" class="cta-button" aria-label="Discover Features">Discover Features</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 FutureTech Gear. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://twitter.com" target="_blank" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com" target="_blank" aria-label="Follow us on Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://linkedin.com" target="_blank" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="newsletter">
+            <h4>Stay Updated</h4>
+            <form onsubmit="return validateNewsletterForm(event)">
+                <input type="email" id="newsletter-email" placeholder="Enter your email" aria-label="Email Address for Newsletter" required>
+                <button type="submit" aria-label="Subscribe to Newsletter">Subscribe</button>
+            </form>
+            <p id="newsletter-message" class="form-message"></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 1000 } },
+                color: { value: "#42A5F5" },
+                shape: { type: "circle" },
+                opacity: { value: 0.6, random: true },
+                size: { value: 4, random: true },
+                line_linked: { enable: true, distance: 150, color: "#42A5F5", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 3, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        function validateNewsletterForm(event) {
+            event.preventDefault();
+            const email = document.getElementById("newsletter-email").value;
+            const message = document.getElementById("newsletter-message");
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                message.textContent = "Please enter a valid email address.";
+                message.style.color = "red";
+                return false;
+            }
+
+            message.textContent = "Thank you for subscribing!";
+            message.style.color = "green";
+            document.getElementById("newsletter-email").value = "";
+            return false;
+        }
+    </script>
+</body>
+</html>

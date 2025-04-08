@@ -69,7 +69,7 @@ paths:
                 file_url: { type: string, example: "https://example.com/file.enc" }
       responses:
         '200':
-          description: Message sent
+          description: Successful response
           content:
             application/json:
               schema:

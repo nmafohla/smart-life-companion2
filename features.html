@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Life Companion 2 - Features</title>
+    <title>Features - Smart Life Companion 2</title>
+    <!-- Suppress Apple touch icon requests -->
+    <link rel="apple-touch-icon" href="/assets/images/icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/images/icon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -26,59 +29,36 @@
         </nav>
     </header>
 
-    <div class="main-content">
-        <section class="features-hero">
-            <h1>Features of Smart Life Companion 2</h1>
-            <p>Explore how these advanced features enhance your daily life with cutting-edge technology.</p>
-        </section>
-
-        <div class="features-grid">
-            <div class="feature-card" id="healthsync">
-                <i class="fas fa-heartbeat feature-icon" style="color: #1976D2;" aria-label="HealthSync 2.0 Icon"></i>
-                <div class="feature-text">
-                    <h3>HealthSync 2.0</h3>
-                    <p>Monitor heart rate, SpO2, and glucose with AI analytics.</p>
-                    <p class="feature-summary">HealthSync 2.0 uses advanced AI to provide real-time health insights, including heart rate variability, blood oxygen levels, and non-invasive glucose monitoring. Get personalized health recommendations and alerts for potential issues.</p>
-                </div>
+    <main class="features-section">
+        <h1>Explore the Features of <span>Smart Life Companion 2</span></h1>
+        <div class="features-container">
+            <div class="feature-card">
+                <img src="assets/images/healthsync2-icon.png" alt="HealthSync Icon" class="feature-icon">
+                <h2>HealthSync 2.0</h2>
+                <p>Monitor heart rate, SpO2, and glucose with AI analytics. Advanced health monitoring with real-time insights and personalized recommendations.</p>
             </div>
-
-            <div class="feature-card" id="arnav">
-                <i class="fas fa-map-marked-alt feature-icon" style="color: #42A5F5;" aria-label="ARNav 2.0 Icon"></i>
-                <div class="feature-text">
-                    <h3>ARNav 2.0</h3>
-                    <p>Holographic AR navigation with 3D mapping.</p>
-                    <p class="feature-summary">ARNav 2.0 projects holographic directions onto your surroundings, using 3D mapping to guide you through unfamiliar environments. Perfect for urban exploration or outdoor adventures.</p>
-                </div>
+            <div class="feature-card">
+                <img src="assets/images/arnav2-icon.png" alt="ARNav Icon" class="feature-icon">
+                <h2>ARNav 2.0</h2>
+                <p>Holographic AR navigation with 3D mapping. Navigate with immersive augmented reality overlays, including 3D arrows and path projections.</p>
             </div>
-
-            <div class="feature-card" id="voicemate">
-                <i class="fas fa-microphone-alt feature-icon" style="color: #FF8A65;" aria-label="VoiceMate 2.0 Icon"></i>
-                <div class="feature-text">
-                    <h3>VoiceMate 2.0</h3>
-                    <p>AI assistant with multi-language support.</p>
-                    <p class="feature-summary">VoiceMate 2.0 supports over 50 languages, allowing you to interact seamlessly in any environment. Set reminders, send messages, or get real-time translations with ease.</p>
-                </div>
+            <div class="feature-card">
+                <img src="assets/images/voicemate2-icon.png" alt="VoiceMate Icon" class="feature-icon">
+                <h2>VoiceMate 2.0</h2>
+                <p>AI assistant with multi-language support. Interact seamlessly with your smartwatch using voice commands in multiple languages.</p>
             </div>
-
-            <div class="feature-card" id="securecomm">
-                <i class="fas fa-shield-alt feature-icon" style="color: #1976D2;" aria-label="SecureComm 2.0 Icon"></i>
-                <div class="feature-text">
-                    <h3>SecureComm 2.0</h3>
-                    <p>Quantum-encrypted communication.</p>
-                    <p class="feature-summary">SecureComm 2.0 ensures your communications are protected with quantum encryption, making it virtually impossible for unauthorized access. Ideal for sensitive conversations.</p>
-                </div>
+            <div class="feature-card">
+                <img src="assets/images/padlock2-icon.png" alt="SecureComm Icon" class="feature-icon">
+                <h2>SecureComm 2.0</h2>
+                <p>Quantum-encrypted communication. Send messages and files securely with state-of-the-art quantum encryption.</p>
             </div>
-
-            <div class="feature-card" id="envirosense">
-                <i class="fas fa-leaf feature-icon" style="color: #42A5F5;" aria-label="EnviroSense 2.0 Icon"></i>
-                <div class="feature-text">
-                    <h3>EnviroSense 2.0</h3>
-                    <p>Track UV, pressure, and air quality with alerts.</p>
-                    <p class="feature-summary">EnviroSense 2.0 monitors environmental factors like UV exposure, air pressure, and air quality, providing real-time alerts to keep you safe and informed.</p>
-                </div>
+            <div class="feature-card">
+                <img src="assets/images/leaf2-icon.png" alt="EnviroSense Icon" class="feature-icon">
+                <h2>EnviroSense 2.0</h2>
+                <p>Track UV, pressure, and air quality with alerts. Stay informed about your environment with real-time data and actionable alerts.</p>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer>
         <p>© 2025 FutureTech Gear. All rights reserved.</p>
@@ -93,41 +73,26 @@
                 <input type="email" id="newsletter-email" placeholder="Enter your email" aria-label="Email Address for Newsletter" required>
                 <button type="submit" aria-label="Subscribe to Newsletter">Subscribe</button>
             </form>
+            <p id="newsletter-message" class="form-message"></p>
         </div>
     </footer>
 
-    <button class="back-to-top" aria-label="Back to Top" tabindex="0">↑</button>
-
     <script>
-        // Back to Top Button
-        const backToTopButton = document.querySelector('.back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Newsletter Form Validation
         function validateNewsletterForm(event) {
             event.preventDefault();
-            const emailInput = document.getElementById('newsletter-email');
-            const email = emailInput.value.trim();
-            if (!email) {
-                alert('Please enter your email address.');
+            const email = document.getElementById("newsletter-email").value;
+            const message = document.getElementById("newsletter-message");
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                message.textContent = "Please enter a valid email address.";
+                message.style.color = "red";
                 return false;
             }
-            if (!/\S+@\S+\.\S+/.test(email)) {
-                alert('Please enter a valid email address.');
-                return false;
-            }
-            alert('Thank you for subscribing!');
-            emailInput.value = '';
+
+            message.textContent = "Thank you for subscribing!";
+            message.style.color = "green";
+            document.getElementById("newsletter-email").value = "";
             return false;
         }
     </script>

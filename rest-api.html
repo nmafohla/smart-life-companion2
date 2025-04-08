@@ -4,52 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Life Companion 2 - REST API</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <!-- Suppress Apple touch icon requests -->
+    <link rel="apple-touch-icon" href="/assets/images/icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/images/icon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
     <header>
-    <div class="logo">
-        <a href="index.html">SLC2</a>
-        <span class="tagline">Your Future Companion</span>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.html" aria-label="Introduction Page">Intro</a></li>
-            <li><a href="features.html" class="active" aria-label="Features Page">Features</a></li>
-            <li><a href="build-specs.html" aria-label="Build Specs Page">Build Specs</a></li>
-            <li><a href="api-portal.html" aria-label="API Developer Portal">API Developer Portal</a></li>
-            <li><a href="rest-api.html" aria-label="REST API Documentation">REST API</a></li>
-            <li><a href="graphql-api.html" aria-label="GraphQL API Documentation">GraphQL API</a></li>
-        </ul>
-    </nav>
-</header>
-
-    <div class="main-content">
-        <h1>REST API Documentation</h1>
-        <p>Explore version 2.0 REST endpoints for Smart Life Companion 2 below.</p>
-
-        <div class="feature-card">
-            <h3>OAuth 2.0 Authentication</h3>
-            <p>All API requests use OAuth 2.0 Authorization Code flow. Refer to the <a href="api-portal.html">API Developer Portal</a> for setup details.</p>
+        <div class="logo">
+            <a href="index.html">SLC2</a>
+            <span class="tagline">Your Future Companion</span>
         </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" aria-label="Introduction Page">Intro</a></li>
+                <li><a href="features.html" aria-label="Features Page">Features</a></li>
+                <li><a href="build-specs.html" aria-label="Build Specs Page">Build Specs</a></li>
+                <li><a href="api-portal.html" aria-label="API Developer Portal">API Developer Portal</a></li>
+                <li><a href="rest-api.html" class="active" aria-label="REST API Documentation">REST API</a></li>
+                <li><a href="graphql-api.html" aria-label="GraphQL API Documentation">GraphQL API</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <div class="feature-card">
-            <h3>REST API (Swagger)</h3>
-            <p>Interact with our REST API endpoints using Swagger UI.</p>
-            <div id="swagger-ui"></div>
+    <section class="rest-api">
+        <div id="particles-js"></div>
+        <div class="rest-api-container">
+            <h1 class="animate-heading">REST API Documentation for <span>Smart Life Companion 2</span></h1>
+            <p class="intro-text">Explore version 2.0 REST endpoints for Smart Life Companion 2 below.</p>
+
+            <!-- OAuth 2.0 Authentication Section -->
+            <div class="auth-section">
+                <div class="diagram-container">
+                    <img src="assets/images/oauth-flowchart.png" alt="OAuth 2.0 Flow" class="diagram-image tilt">
+                </div>
+                <div class="auth-text-block glassmorphism">
+                    <div class="auth-content">
+                        <h2>OAuth 2.0 Authentication</h2>
+                        <p>All API requests use OAuth 2.0 Authorization Code flow. Refer to the <a href="api-portal.html">API Developer Portal</a> for detailed setup instructions.</p>
+                        <ul class="auth-steps">
+                            <li class="auth-step"><i class="fas fa-user-plus step-icon"></i> Register your app to get <strong>client_id</strong> and <strong>client_secret</strong>.</li>
+                            <li class="auth-step"><i class="fas fa-link step-icon"></i> Redirect to the authorization endpoint.</li>
+                            <li class="auth-step"><i class="fas fa-exchange-alt step-icon"></i> Exchange the authorization code for an access token.</li>
+                            <li class="auth-step"><i class="fas fa-check-circle step-icon"></i> Use the access token for API calls.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Swagger UI Section -->
+            <div class="swagger-section">
+                <h2>REST API (Swagger)</h2>
+                <p>Interact with our REST API endpoints using Swagger UI.</p>
+                <div id="swagger-ui" class="swagger-container"></div>
+            </div>
         </div>
-    </div>
+    </section>
 
     <footer>
         <p>© 2025 FutureTech Gear. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://twitter.com" target="_blank" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com" target="_blank" aria-label="Follow us on Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://linkedin.com" target="_blank" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="newsletter">
+            <h4>Stay Updated</h4>
+            <form onsubmit="return validateNewsletterForm(event)">
+                <input type="email" id="newsletter-email" placeholder="Enter your email" aria-label="Email Address for Newsletter" required>
+                <button type="submit" aria-label="Subscribe to Newsletter">Subscribe</button>
+            </form>
+            <p id="newsletter-message" class="form-message"></p>
+        </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-bundle.js"></script>
     <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-standalone-preset.js"></script>
     <script>
+        // Particle.js configuration
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 1000 } },
+                color: { value: "#42A5F5" },
+                shape: { type: "circle" },
+                opacity: { value: 0.6, random: true },
+                size: { value: 4, random: true },
+                line_linked: { enable: true, distance: 150, color: "#42A5F5", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 3, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // Vanilla Tilt for 3D tilt effect on diagram image
+        VanillaTilt.init(document.querySelectorAll(".tilt"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.5
+        });
+
+        // Swagger UI configuration
         window.onload = function() {
             SwaggerUIBundle({
                 url: "assets/swagger.yaml",
@@ -58,6 +122,25 @@
                 layout: "StandaloneLayout"
             });
         };
+
+        // Newsletter form validation
+        function validateNewsletterForm(event) {
+            event.preventDefault();
+            const email = document.getElementById("newsletter-email").value;
+            const message = document.getElementById("newsletter-message");
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                message.textContent = "Please enter a valid email address.";
+                message.style.color = "red";
+                return false;
+            }
+
+            message.textContent = "Thank you for subscribing!";
+            message.style.color = "green";
+            document.getElementById("newsletter-email").value = "";
+            return false;
+        }
     </script>
 </body>
 </html>

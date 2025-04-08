@@ -4,48 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Life Companion 2 - GraphQL API</title>
+    <!-- Suppress Apple touch icon requests -->
+    <link rel="apple-touch-icon" href="/assets/images/icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/images/icon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/graphiql/graphiql.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@graphiql/react@0.24.2/dist/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
     <header>
-    <div class="logo">
-        <a href="index.html">SLC2</a>
-        <span class="tagline">Your Future Companion</span>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.html" aria-label="Introduction Page">Intro</a></li>
-            <li><a href="features.html" class="active" aria-label="Features Page">Features</a></li>
-            <li><a href="build-specs.html" aria-label="Build Specs Page">Build Specs</a></li>
-            <li><a href="api-portal.html" aria-label="API Developer Portal">API Developer Portal</a></li>
-            <li><a href="rest-api.html" aria-label="REST API Documentation">REST API</a></li>
-            <li><a href="graphql-api.html" aria-label="GraphQL API Documentation">GraphQL API</a></li>
-        </ul>
-    </nav>
-</header>
-
-    <div class="main-content">
-        <h1>GraphQL API Documentation</h1>
-        <p>Query data efficiently with our enhanced GraphQL API for Smart Life Companion 2.</p>
-
-        <div class="feature-card">
-            <h3>OAuth 2.0 Authentication</h3>
-            <p>All API requests use OAuth 2.0 Authorization Code flow. Refer to the <a href="api-portal.html">API Developer Portal</a> for setup details.</p>
-            <a href="api-portal.html" class="button">Learn More</a>
+        <div class="logo">
+            <a href="index.html">SLC2</a>
+            <span class="tagline">Your Future Companion</span>
         </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" aria-label="Introduction Page">Intro</a></li>
+                <li><a href="features.html" aria-label="Features Page">Features</a></li>
+                <li><a href="build-specs.html" aria-label="Build Specs Page">Build Specs</a></li>
+                <li><a href="api-portal.html" aria-label="API Developer Portal">API Developer Portal</a></li>
+                <li><a href="rest-api.html" aria-label="REST API Documentation">REST API</a></li>
+                <li><a href="graphql-api.html" class="active" aria-label="GraphQL API Documentation">GraphQL API</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <div class="section-divider"></div>
+    <section class="graphql-api">
+        <div id="particles-js"></div>
+        <div class="graphql-api-container">
+            <h1 class="animate-heading">GraphQL API Documentation for <span>Smart Life Companion 2</span></h1>
+            <p class="intro-text">Query data efficiently with our enhanced GraphQL API for Smart Life Companion 2.</p>
 
-        <<div class="feature-card">
-    <h3>GraphQL API Playground</h3>
-    <p>Try out GraphQL queries in the interactive playground below. Note: This is a mock setup for demonstration purposes.</p>
-    <div class="quick-start">
-        <h4>Quick Start</h4>
-        <p>Select a sample query to load it into the playground:</p>
-        <button class="button load-query" data-query='query {
+            <!-- OAuth 2.0 Authentication Section -->
+            <div class="auth-section">
+                <div class="diagram-container">
+                    <img src="assets/images/oauth-flowchart.png" alt="OAuth 2.0 Flow" class="diagram-image tilt">
+                </div>
+                <div class="auth-text-block glassmorphism">
+                    <div class="auth-content">
+                        <h2>OAuth 2.0 Authentication</h2>
+                        <p>All API requests use OAuth 2.0 Authorization Code flow. Refer to the <a href="api-portal.html">API Developer Portal</a> for detailed setup instructions.</p>
+                        <ul class="auth-steps">
+                            <li class="auth-step"><i class="fas fa-user-plus step-icon"></i> Register your app to get <strong>client_id</strong> and <strong>client_secret</strong>.</li>
+                            <li class="auth-step"><i class="fas fa-link step-icon"></i> Redirect to the authorization endpoint.</li>
+                            <li class="auth-step"><i class="fas fa-exchange-alt step-icon"></i> Exchange the authorization code for an access token.</li>
+                            <li class="auth-step"><i class="fas fa-check-circle step-icon"></i> Use the access token for API calls.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GraphiQL Playground Section -->
+            <div class="graphiql-section">
+                <h2>GraphQL API Playground</h2>
+                <p>Try out GraphQL queries in the interactive playground below. Note: This is a mock setup for demonstration purposes.</p>
+                <div class="quick-start">
+                    <h4>Quick Start</h4>
+                    <p>Select a sample query to load it into the playground:</p>
+                    <button class="cta-button load-query" data-query='query {
   deviceSpecs {
     processor
     memory
@@ -59,32 +77,31 @@
     waterResistance
   }
 }'>Load Device Specs Query</button>
-        <button class="button load-query" data-query='query {
+                    <button class="cta-button load-query" data-query='query {
   features {
     name
     description
     version
   }
 }'>Load Features Query</button>
-    </div>
-    <div id="graphiql"></div>
-</div>
+                </div>
+                <div id="graphiql" class="graphiql-container"></div>
+            </div>
 
-        <div class="section-divider"></div>
-
-        <div class="feature-card">
-            <h3>GraphQL API Examples</h3>
-            <p>Explore example queries and responses below.</p>
-
-            <h4>Endpoint</h4>
-            <pre><code>https://api.smartlifecompanion.com/v2/graphql</code></pre>
-
-            <h4>Authentication</h4>
-            <pre><code>Authorization: Bearer YOUR_ACCESS_TOKEN</code></pre>
-
-            <button class="collapsible">Example Query: Device Specs</button>
-            <div class="collapsible-content">
-                <pre><code class="language-graphql">
+            <!-- Examples Section -->
+            <div class="examples-section">
+                <h2>GraphQL API Examples</h2>
+                <p>Explore example queries and responses below.</p>
+                <div class="example-card glassmorphism">
+                    <h4>Endpoint</h4>
+                    <pre><code class="language-graphql">https://api.smartlifecompanion.com/v2/graphql</code></pre>
+                    <h4>Authentication</h4>
+                    <pre><code class="language-graphql">Authorization: Bearer YOUR_ACCESS_TOKEN</code></pre>
+                </div>
+                <div class="example-card">
+                    <button class="collapsible">Example Query: Device Specs</button>
+                    <div class="collapsible-content">
+                        <pre><code class="language-graphql">
 query {
   deviceSpecs {
     processor
@@ -99,9 +116,9 @@ query {
     waterResistance
   }
 }
-                </code></pre>
-                <p><strong>Response:</strong></p>
-                <pre><code class="language-json">
+                        </code></pre>
+                        <p><strong>Response:</strong></p>
+                        <pre><code class="language-json">
 {
   "data": {
     "deviceSpecs": {
@@ -109,8 +126,8 @@ query {
       "memory": "8GB LPDDR5 RAM",
       "storage": "64GB UFS 3.1",
       "display": "1.7-inch AMOLED, 400x400 resolution, 3D touch",
-      "sensors": ["Heart rate", "SpO2", "Glucose", "UV", "Pressure", "Air quality"],
-      "connectivity": ["Bluetooth 5.2", "Wi-Fi 6", "5G"],
+      "sensors": "Heart rate, SpO2, glucose, UV, pressure, air quality",
+      "connectivity": "Bluetooth 5.2, Wi-Fi 6, 5G",
       "battery": "500mAh, up to 72 hours, wireless charging",
       "material": "Aerospace-grade titanium and sapphire glass",
       "weight": "50 grams",
@@ -118,133 +135,91 @@ query {
     }
   }
 }
-                </code></pre>
-                <button class="button copy-query" data-query='query {
-  deviceSpecs {
-    processor
-    memory
-    storage
-    display
-    sensors
-    connectivity
-    battery
-    material
-    weight
-    waterResistance
-  }
-}'>Copy Query</button>
-                <button class="button load-query" data-query='query {
-  deviceSpecs {
-    processor
-    memory
-    storage
-    display
-    sensors
-    connectivity
-    battery
-    material
-    weight
-    waterResistance
-  }
-}'>Load in Playground</button>
-            </div>
-
-            <button class="collapsible">Example Query: Features</button>
-            <div class="collapsible-content">
-                <pre><code class="language-graphql">
-query {
-  features {
-    name
-    description
-    version
-  }
-}
-                </code></pre>
-                <p><strong>Response:</strong></p>
-                <pre><code class="language-json">
-{
-  "data": {
-    "features": [
-      { "name": "HealthSync 2.0", "description": "Monitor heart rate, SpO2, and glucose with AI analytics.", "version": "2.0" },
-      { "name": "ARNav 2.0", "description": "Holographic AR navigation with 3D mapping.", "version": "2.0" },
-      { "name": "VoiceMate 2.0", "description": "AI assistant with multi-language support.", "version": "2.0" },
-      { "name": "SecureComm 2.0", "description": "Quantum-encrypted communication.", "version": "2.0" },
-      { "name": "EnviroSense 2.0", "description": "Track UV, pressure, and air quality with alerts.", "version": "2.0" }
-    ]
-  }
-}
-                </code></pre>
-                <button class="button copy-query" data-query='query {
-  features {
-    name
-    description
-    version
-  }
-}'>Copy Query</button>
-                <button class="button load-query" data-query='query {
-  features {
-    name
-    description
-    version
-  }
-}'>Load in Playground</button>
+                        </code></pre>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <footer>
         <p>© 2025 FutureTech Gear. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://twitter.com" target="_blank" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com" target="_blank" aria-label="Follow us on Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://linkedin.com" target="_blank" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="newsletter">
+            <h4>Stay Updated</h4>
+            <form onsubmit="return validateNewsletterForm(event)">
+                <input type="email" id="newsletter-email" placeholder="Enter your email" aria-label="Email Address for Newsletter" required>
+                <button type="submit" aria-label="Subscribe to Newsletter">Subscribe</button>
+            </form>
+            <p id="newsletter-message" class="form-message"></p>
+        </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/graphiql/graphiql.min.js"></script>
+    <script src="https://unpkg.com/@graphiql/react@0.24.2/dist/index.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-graphql.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
     <script>
-        // Mock fetcher for demonstration purposes
-        const mockFetcher = (graphQLParams) => {
-            const query = graphQLParams.query;
-            if (query.includes("deviceSpecs")) {
-                return Promise.resolve({
-                    data: {
-                        deviceSpecs: {
-                            processor: "Octa-core 2.5 GHz ARM Cortex-A76",
-                            memory: "8GB LPDDR5 RAM",
-                            storage: "64GB UFS 3.1",
-                            display: "1.7-inch AMOLED, 400x400 resolution, 3D touch",
-                            sensors: ["Heart rate", "SpO2", "Glucose", "UV", "Pressure", "Air quality"],
-                            connectivity: ["Bluetooth 5.2", "Wi-Fi 6", "5G"],
-                            battery: "500mAh, up to 72 hours, wireless charging",
-                            material: "Aerospace-grade titanium and sapphire glass",
-                            weight: "50 grams",
-                            waterResistance: "IP69"
-                        }
-                    }
-                });
-            } else if (query.includes("features")) {
-                return Promise.resolve({
-                    data: {
-                        features: [
-                            { name: "HealthSync 2.0", description: "Monitor heart rate, SpO2, and glucose with AI analytics.", version: "2.0" },
-                            { name: "ARNav 2.0", description: "Holographic AR navigation with 3D mapping.", version: "2.0" },
-                            { name: "VoiceMate 2.0", description: "AI assistant with multi-language support.", version: "2.0" },
-                            { name: "SecureComm 2.0", description: "Quantum-encrypted communication.", version: "2.0" },
-                            { name: "EnviroSense 2.0", description: "Track UV, pressure, and air quality with alerts.", version: "2.0" }
-                        ]
-                    }
-                });
-            }
-            return Promise.resolve({ data: null });
+        // Particle.js configuration
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 1000 } },
+                color: { value: "#42A5F5" },
+                shape: { type: "circle" },
+                opacity: { value: 0.6, random: true },
+                size: { value: 4, random: true },
+                line_linked: { enable: true, distance: 150, color: "#42A5F5", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 3, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // Vanilla Tilt for 3D tilt effect on diagram image
+        VanillaTilt.init(document.querySelectorAll(".tilt"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.5
+        });
+
+        // GraphiQL configuration (mock setup)
+        const { GraphiQL } = window.GraphiQLReact;
+
+        const mockFetcher = async (graphQLParams) => {
+            return {
+                data: {
+                    deviceSpecs: {
+                        processor: "Octa-core 2.5 GHz ARM Cortex-A76",
+                        memory: "8GB LPDDR5 RAM",
+                        storage: "64GB UFS 3.1",
+                        display: "1.7-inch AMOLED, 400x400 resolution, 3D touch",
+                        sensors: "Heart rate, SpO2, glucose, UV, pressure, air quality",
+                        connectivity: "Bluetooth 5.2, Wi-Fi 6, 5G",
+                        battery: "500mAh, up to 72 hours, wireless charging",
+                        material: "Aerospace-grade titanium and sapphire glass",
+                        weight: "50 grams",
+                        waterResistance: "IP69"
+                    },
+                    features: [
+                        { name: "HealthSync", description: "Retrieve advanced biometric data", version: "2.0" },
+                        { name: "EnviroSense", description: "Retrieve enhanced environmental data", version: "2.0" }
+                    ]
+                }
+            };
         };
 
-        // Initialize GraphiQL
-        let graphiql;
-        ReactDOM.render(
-            graphiql = React.createElement(GraphiQL, {
-                fetcher: mockFetcher,
-                defaultQuery: `query {
+        const defaultQuery = `query {
   deviceSpecs {
     processor
     memory
@@ -257,43 +232,58 @@ query {
     weight
     waterResistance
   }
-}`
+}`;
+
+        ReactDOM.render(
+            React.createElement(GraphiQL, {
+                fetcher: mockFetcher,
+                defaultQuery: defaultQuery,
+                headerEditorEnabled: true,
+                shouldPersistHeaders: true
             }),
-            document.getElementById('graphiql')
+            document.getElementById("graphiql")
         );
 
-        // Collapsible Sections
-        const collapsibles = document.getElementsByClassName("collapsible");
-        for (let i = 0; i < collapsibles.length; i++) {
-            collapsibles[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                const content = this.nextElementSibling;
-                if (content.classList.contains("active")) {
-                    content.classList.remove("active");
-                } else {
-                    content.classList.add("active");
+        // Load query buttons
+        document.querySelectorAll(".load-query").forEach(button => {
+            button.addEventListener("click", () => {
+                const query = button.getAttribute("data-query");
+                const editor = document.querySelector(".graphiql-container .cm-scroller");
+                if (editor) {
+                    const cmInstance = editor.CodeMirror || editor.querySelector(".cm-editor").CodeMirror;
+                    if (cmInstance) {
+                        cmInstance.setValue(query);
+                    }
                 }
             });
-        }
+        });
 
-        // Copy Query to Clipboard
-        const copyButtons = document.getElementsByClassName("copy-query");
-        for (let i = 0; i < copyButtons.length; i++) {
-            copyButtons[i].addEventListener("click", function() {
-                const query = this.getAttribute("data-query");
-                navigator.clipboard.writeText(query).then(() => {
-                    alert("Query copied to clipboard!");
-                });
+        // Collapsible sections
+        document.querySelectorAll(".collapsible").forEach(button => {
+            button.addEventListener("click", () => {
+                button.classList.toggle("active");
+                const content = button.nextElementSibling;
+                content.style.display = content.style.display === "block" ? "none" : "block";
             });
-        }
+        });
 
-        // Load Query into Playground
-        const loadButtons = document.getElementsByClassName("load-query");
-        for (let i = 0; i < loadButtons.length; i++) {
-            loadButtons[i].addEventListener("click", function() {
-                const query = this.getAttribute("data-query");
-                graphiql.setState({ query });
-            });
+        // Newsletter form validation
+        function validateNewsletterForm(event) {
+            event.preventDefault();
+            const email = document.getElementById("newsletter-email").value;
+            const message = document.getElementById("newsletter-message");
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                message.textContent = "Please enter a valid email address.";
+                message.style.color = "red";
+                return false;
+            }
+
+            message.textContent = "Thank you for subscribing!";
+            message.style.color = "green";
+            document.getElementById("newsletter-email").value = "";
+            return false;
         }
     </script>
 </body>
